@@ -1,46 +1,44 @@
-
-
-
 $(document).ready(function() {
-    $("welcome_screen").show()
+    $("#welcome_screen").show(700)
     toggle_off()
-	$("welcome").click(function() {
+    $("#welcome").click(function() {
         toggle_off()
-        $("welcome_screen").show();
-    });
+        $("#welcome_screen").show(700)
+    })
 
-    $("register").click(function() {
+    $("#register").click(function() {
         toggle_off()
-        $("register_screen").show();
-    });
+        $("#register_screen").show(700)
+    })
 
-    $("login").click(function() {
+    $("#login").click(function() {
         toggle_off()
-        $("login_screen").show();
-    });
+        $("#login_screen").show(700)
+    })
 
-    $("about").click(function() {
+    $("#about").click(function() {
         toggle_off()
-        $("about_screen").show();
-    });
+        $("#about_screen").show(700)
+    })
 
-    $("game").click(function() {
+    $("#game").click(function() {
         toggle_off()
-        $("settings_screen").show();
-    });
+        $("#settings_screen").show(700)
+    })
 
-    $("play").click(function() {
+    $("#play").click(function() {
         toggle_off()
-        $("game_screen").show();
-    });
-});
+        $("#game_screen").show(700)
+        Start() // start the packman game
+    })
+})
 
 function toggle_off() {
-    $("welcome_screen").hide()
-    $("register_screen").hide()
-    $("login_screen").hide()
-    $("about_screen").hide()
-    $("game_screen").hide()
-    $("settings_screen").hide()
-    $("game_screen").hide()
+    $("#welcome_screen").hide(700)
+    $("#register_screen").hide(700)
+    $("#login_screen").hide(700)
+    $("#about_screen").hide(700)
+    $("#game_screen").hide(700)
+    $("#settings_screen").hide(700)
+    $("#game_screen").hide(700)
 }

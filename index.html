@@ -1,82 +1,86 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<script src="./jquery-3.4.1.slim.min.js"></script>
-		<script type="text/javascript" src="./app.js"></script>
-	</head>
-	
 
-	<body>
-		<header>
-			<h1>Pack-man application</h1>
-			<img src="rec/logo.png"/>
-			<h4>
-				Hod twito - 315230482 <br>
-				Shoham Zarfati - 318501418
-			</h4>
-		</header>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <script src="./jquery-3.4.1.slim.min.js"></script>
+        <script type="text/javascript" src="./app.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+    </head>
 
 
-		<!-- menu -->
-		<div id="menu">
-			<nav>
-				<ul>
-					<li id="welcome">Welcome</li>
-					<li id="register">Register</li>
-					<li id="login">Login</li>
-					<li id="about">About</li>
-					<li id="game">Game</li>
-				</ul>
-			</nav>
-		</div>
+    <body>
+        <header>
+            <h1>Pack-man application</h1>
+            <img src="rec/logo.png" />
+            <h4>
+                Hod twito - 315230482 <br>
+                Shoham Zarfati - 318501418
+            </h4>
+        </header>
 
-		<!-- content -->
-		<div>
-			<div id=welcome_screen>
-				Welcome!
-			</div>
 
-			<div id="register_screen">
-				Register here...
-			</div>
+        <!-- menu -->
+        <div id="menu">
+            <nav>
+                <ul>
+                    <li class="menu" id="welcome">Welcome</li>
+                    <li class="menu" id="register">Register</li>
+                    <li class="menu" id="login">Login</li>
+                    <li class="menu" id="about">About</li>
+                    <li class="menu" id="game">Game</li>
+                </ul>
+            </nav>
+        </div>
 
-			<div id=login_screen>
-				login here
-			</div>
+        <!-- content -->
+        <div>
+            <div id=welcome_screen>
+                Welcome!
+            </div>
 
-			<div id=settings_screen>
-				settings
-				<button id="play"></button>
-			</div>
+            <div id="register_screen">
+                Register here...
+            </div>
 
-			<div id=about_screen>
-				about.....
-			</div>
+            <div id=login_screen>
+                login here
+            </div>
 
-			<div id="game_screen">
-				<div id="score">
-					<label for="lblScore">SCORE:</label>
-					<input id="lblScore" type="text" />
-				</div>
-				<div id="time">
-					<label for="lblTime">TIME:</label>
-					<input id="lblTime" type="text" />
-				</div>
-				<div>
-					<canvas id="canvas" height="600" width="600"></canvas>
-				</div>
-			</div>
-		</div>
-		
-		
-		<!-- footer -->
-		<div>
-			<p>
-				This is a game made for the course Internet Development Enviorments
-				The source code is available at: https://github.com/SISE-Web-Development-Environments/assignment2-hod-shoham
-			</p>
-		</div>
-		
-	</body>
-	<script type="text/javascript" src="script.js"></script>
+            <div id=settings_screen>
+                settings
+                <button id="play"></button>
+            </div>
+
+            <div id=about_screen>
+                about.....
+            </div>
+
+            <div id="game_screen">
+                <div id="score">
+                    <label for="lblScore">SCORE:</label>
+                    <input id="lblScore" type="text" />
+                </div>
+                <div id="time">
+                    <label for="lblTime">TIME:</label>
+                    <input id="lblTime" type="text" />
+                </div>
+                <div>
+                    <canvas id="canvas" height="600" width="600"></canvas>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- footer -->
+        <div>
+            <p>
+                This is a game made for the course Internet Development Enviorments. <br>
+                The source code is available at: <a href="https://github.com/SISE-Web-Development-Environments/assignment2-hod-shoham">
+                https://github.com/SISE-Web-Development-Environments/assignment2-hod-shoham</a>
+            </p>
+        </div>
+
+    </body>
+
 </html>
