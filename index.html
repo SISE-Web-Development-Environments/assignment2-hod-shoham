@@ -10,32 +10,32 @@
 
 
     <body>
-        <header>
-            <h1>Pack-man application</h1>
-            <img src="rec/logo.png" />
-            <h4>
-                Hod twito - 315230482 <br>
-                Shoham Zarfati - 318501418
-            </h4>
+        <header id="menu">
+            <header id="header">
+                <h1>Pack-man application</h1>
+                <img src="rec/logo.png" />
+                <h4>
+                    Hod twito - 315230482 <br>
+                    Shoham Zarfati - 318501418
+                </h4>
+            </header>
+
+
+            <div id="menu_div">
+                <nav>
+                    <ul>
+                        <li class="menu" id="welcome">Welcome</li>
+                        <li class="menu" id="register">Register</li>
+                        <li class="menu" id="login">Login</li>
+                        <li class="menu" id="about">About</li>
+                        <li class="menu" id="game">Game</li>
+                    </ul>
+                </nav>
+            </div>
         </header>
 
-
-        <!-- menu -->
-        <div id="menu">
-            <nav>
-                <ul>
-                    <li class="menu" id="welcome">Welcome</li>
-                    <li class="menu" id="register">Register</li>
-                    <li class="menu" id="login">Login</li>
-                    <li class="menu" id="about">About</li>
-                    <li class="menu" id="game">Game</li>
-                </ul>
-            </nav>
-        </div>
-
-        <!-- content -->
-        <div>
-            <div id=welcome_screen>
+        <div id="content">
+            <div id="welcome_screen">
                 Welcome!
             </div>
 
@@ -43,37 +43,81 @@
                 Register here...
             </div>
 
-            <div id=login_screen>
-                login here
+            <div id="login_screen">
+                login....
             </div>
 
-            <div id=settings_screen>
-                settings
-                <button id="play"></button>
-            </div>
+            <table id="settings&game" style="width:100%">
+                <tr>
+                  <td id="game_screen">
+                    <div id="score">
+                        <label for="lblScore">SCORE:</label>
+                        <input id="lblScore" type="text" />
+                    </div>
+                    <div id="time">
+                        <label for="lblTime">TIME:</label>
+                        <input id="lblTime" type="text" />
+                    </div>
+                    <div>
+                        <canvas id="canvas" height="600" width="600"></canvas>
+                    </div>
+                  </td>
+                  <td id="settings_screen">
+                    <form id="settings_form">
+                        <table id="settings_table">
+                            <tr>
+                                <td id="btns_cntrl">
+                                    <table id="btns_cntrl_table">
+                                        <tr id="up_clmn">
+                                            <td><input type="button" value="UP" id="up_btn"></td>
+                                            <td><p id="up"></p></td>
+                                        </tr>
+                                        <tr id="down_clmn">
+                                            <td><input type="button" value="DOWN" id="down_btn"></td>
+                                            <td><p id="down"></p></td>
+                                        </tr>
+                                        <tr id="left_clmn">
+                                            <td><input type="button" value="LEFT" id="left_btn"></td>
+                                            <td><p id="left"></p></td>
+                                        </tr>
+                                        <tr id="right_clmn">
+                                            <td><input type="button" value="RIGHT" id="right_btn"></td>
+                                            <td><p id="right"></p></td>
+                                        </tr>
+                                    </table>
+                                </td>
+=                            </tr>
+                            
+                            <label for="r_num">choose how many points: </label>
+                            <input type="number" id="r_num" min="50" max="90">
+                            
+                            <label for="5_points">choose color for 5 points rewards: </label>
+                            <input type="color" id="5_points">
+                            <label for="15_points">choose color for 15 points rewards: </label>
+                            <input type="color" id="15_points">
+                            <label for="25_points">choose color for 25 points rewards: </label>
+                            <input type="color" id="25_points">
+        
+                            <label for="time_picker">choose how much time for a game: </label>
+                            <input type="number" id="time_picker" min="60" max="600">
+        
+                            <label for="monster_picker">choose how many ghosts you'll fight: </label>
+                            <input type="number" id="monster_picker" min="1" max="4">
+        
+                            <button id="random" type="button">random</button>
+                            <button id="play" type="button">play</button>
+                        </table>
+                    </form>
+                  </td>
+                </tr>
+              </table>
 
             <div id=about_screen>
                 about.....
             </div>
-
-            <div id="game_screen">
-                <div id="score">
-                    <label for="lblScore">SCORE:</label>
-                    <input id="lblScore" type="text" />
-                </div>
-                <div id="time">
-                    <label for="lblTime">TIME:</label>
-                    <input id="lblTime" type="text" />
-                </div>
-                <div>
-                    <canvas id="canvas" height="600" width="600"></canvas>
-                </div>
-            </div>
         </div>
 
-
-        <!-- footer -->
-        <div>
+        <div id="footer">
             <p>
                 This is a game made for the course Internet Development Enviorments. <br>
                 The source code is available at: <a href="https://github.com/SISE-Web-Development-Environments/assignment2-hod-shoham">
