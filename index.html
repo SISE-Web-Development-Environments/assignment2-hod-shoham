@@ -5,7 +5,9 @@
         <link rel="stylesheet" type="text/css" href="style.css" />
         <script src="./jquery-3.4.1.slim.min.js"></script>
         <script type="text/javascript" src="./app.js"></script>
-        <script type="text/javascript" src="script.js"></script>
+        <script type="text/javascript" src="settings.js"></script>
+        <script type="text/javascript" src="auth.js"></script>
+
     </head>
 
 
@@ -36,15 +38,27 @@
 
         <div id="content">
             <div id="welcome_screen">
-                Welcome!
+               
             </div>
 
             <div id="register_screen">
-                Register here...
+                <label for="uname"><b>Username</b></label>
+                <input id="register_usr" type="text" placeholder="Enter Username" name="uname" required>
+            
+                <label for="pass"><b>Password</b></label>
+                <input id="register_pass" type="password" placeholder="Enter Password" name="pass" required>
+            
+                <button id="register_btn" type="submit">Register</button>
             </div>
 
             <div id="login_screen">
-                login....
+                <label for="uname"><b>Username</b></label>
+                <input id="login_usr" type="text" placeholder="Enter Username" name="uname" required>
+            
+                <label for="pass"><b>Password</b></label>
+                <input id="login_pass" type="password" placeholder="Enter Password" name="pass" required>
+            
+                <button id="login_btn" type="submit">Login</button>
             </div>
 
             <table id="settings&game" style="width:100%">
@@ -86,7 +100,7 @@
                                         </tr>
                                     </table>
                                 </td>
-=                            </tr>
+                            </tr>
                             
                             <label for="r_num">choose how many points: </label>
                             <input type="number" id="r_num" min="50" max="90">
