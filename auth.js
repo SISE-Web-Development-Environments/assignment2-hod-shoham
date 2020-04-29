@@ -1,5 +1,5 @@
 var logged_in = false
-
+var valid_registration = false
 var users = [
     {username: "p", password: "p"}
 ]
@@ -7,9 +7,9 @@ var users = [
 
 $(document).ready(function() {
     $("#login_btn").click(function() {
-        let usr = $("#login_usr").val()
-        let pass = $("login_pass").val()
-        if (users.some(user => user.username == usr && usr.password == pass)) {
+        let usr  = $("#login_usr").val()
+        let pass = $("#login_pass").val()
+        if (users.some(user => user.username == usr && user.password == pass)) {
             login()
         }
         else{
@@ -23,15 +23,18 @@ $(document).ready(function() {
         let uname = $("#register_uname").val()
         let email = $("#register_email").val()
         let bdate = $("#register_bdate").val()
-        let pass  = $("register_pass").val()
+        let pass  = $("#register_pass").val()
         
-        // TODO: add check for all before add user
-        // TODO: check why password is undefined...
-        let user  = {username: uname, password: pass}
-        users.push(user)
-        window.alert("registered successfully")
-        toggle_off()
-        $("#login_screen").show(700)
+        if(valid_registration){
+            let user  = {username: uname, password: pass}
+            users.push(user)
+            window.alert("registered successfully")
+            toggle_off()
+            $("#login_screen").show(700)
+        }
+        else{
+            window.alert("something isn't right here...")
+        }
     })
 })
 
