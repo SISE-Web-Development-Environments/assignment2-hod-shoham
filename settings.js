@@ -5,6 +5,8 @@ var right = 39
 
 $(document).ready(function() {
     toggle_off()
+    $("#game").hide()
+    
     $("#welcome_screen").show(700)
     $("#welcome").click(function() {
         toggle_off()

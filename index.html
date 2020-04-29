@@ -7,9 +7,8 @@
         <script type="text/javascript" src="./app.js"></script>
         <script type="text/javascript" src="settings.js"></script>
         <script type="text/javascript" src="auth.js"></script>
-
+        <script type="text/javascript" src="register_validation.js"></script>
     </head>
-
 
     <body>
         <header id="menu">
@@ -38,16 +37,56 @@
 
         <div id="content">
             <div id="welcome_screen">
-               
+                welcome screen...
             </div>
 
             <div id="register_screen">
-                <label for="uname"><b>Username</b></label>
-                <input id="register_usr" type="text" placeholder="Enter Username" name="uname" required>
-            
-                <label for="pass"><b>Password</b></label>
-                <input id="register_pass" type="password" placeholder="Enter Password" name="pass" required>
-            
+                <!-- #region fname -->
+                <label class="registartion_lable" for="fname"><b>First Name*</b></label>
+                <input class="registartion_input" id="register_fname" type="text" placeholder="Enter First Name" name="fname" minlength="3" maxlength="50" required>
+                <span class="registration_error" id="fname_err_0">this is required!</span>
+                <span class="registration_error" id="fname_err_1">invalid name- must be at least 3 characters</span>
+                <span class="registration_error" id="fname_err_2">invalid name- first name can't contain non-letters characters</span>
+                <!-- #endregion -->
+                <br>
+                <!-- #region lname -->
+                <label class="registartion_lable" for="lname"><b>Last Name*</b></label>
+                <input class="registartion_input" id="register_lname" type="text" placeholder="Enter Last Name" name="lname" minlength="3" maxlength="50" required>
+                <span class="registration_error" id="lname_err_0">this is required!</span>
+                <span class="registration_error" id="lname_err_1">invalid name- must be at least 3 characters</span>
+                <span class="registration_error" id="lname_err_2">invalid name- last name can't contain non-letters characters</span>
+                <!-- #endregion -->
+                <br>
+                <!-- #region uname -->
+                <label class="registartion_lable" for="uname"><b>Username*</b></label>
+                <input class="registartion_input" id="register_uname" type="text" placeholder="Enter Username" name="uname" minlength="3" maxlength="20" required>
+                <span class="registration_error" id="uname_err_0">this is required!</span>
+                <span class="registration_error" id="uname_err_1">username invalid- must be at least 3 characters</span>
+                <span class="registration_error" id="uname_err_2">username invalid- username cant start with a number</span>
+                <span class="registration_error" id="uname_err_3">username invalid- username cant contain special characters</span>
+                <span class="registration_error" id="uname_err_4">username already taken</span>
+                <!-- #endregion -->
+                <br>
+                <!-- #region email -->
+                <label class="registartion_lable" for="email"><b>email*</b></label>
+                <input class="registartion_input" id="register_email" type="email" placeholder="someone@mail.com" name="email" required>
+                <span class="registration_error" id="email_err_0">this is required!</span>
+                <span class="registration_error" id="email_err_1">invalid email- don't look like an email</span>
+                <!-- #endregion -->
+                <br>
+                <!-- #region bdate -->
+                <label class="registartion_lable" for="bdate"><b>Birth Date*</b></label>
+                <input id="register_bdate" type="date" name="bdate" required>
+                <!-- #endregion -->
+                <br>
+                <!-- #region pass -->
+                <label class="registartion_lable" for="pass"><b>Password*</b></label>
+                <input class="registartion_input" id="register_pass" type="password" placeholder="Enter Password" name="pass" minlength="6" maxlength="50" required>
+                <span class="registration_error" id="pass_err_0">this is required!</span>
+                <span class="registration_error" id="pass_err_1">password too short</span>
+                <span class="registration_error" id="pass_err_2">password must contain at least one number and one letter</span>
+                <!-- #endregion -->
+                <br>
                 <button id="register_btn" type="submit">Register</button>
             </div>
 
@@ -124,8 +163,9 @@
                     </form>
                   </td>
                 </tr>
-              </table>
+            </table>
 
+            <!-- TODO: change from div to modal dialog -->
             <div id=about_screen>
                 about.....
             </div>
