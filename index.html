@@ -5,9 +5,12 @@
         <link rel="stylesheet" type="text/css" href="style.css" />
         <script src="./jquery-3.4.1.slim.min.js"></script>
         <script type="text/javascript" src="./app.js"></script>
-        <script type="text/javascript" src="settings.js"></script>
+        <script type="text/javascript" src="screen_controller.js"></script>
+        <script type="text/javascript" src="game_settings.js"></script>
         <script type="text/javascript" src="auth.js"></script>
         <script type="text/javascript" src="register_validation.js"></script>
+        
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     </head>
 
     <body>
@@ -28,7 +31,7 @@
                         <li class="menu" id="welcome">Welcome</li>
                         <li class="menu" id="register">Register</li>
                         <li class="menu" id="login">Login</li>
-                        <li class="menu" id="about">About</li>
+                        <li class="menu" id="about" data-toggle="modal" data-target="#about_screen">About</li>
                         <li class="menu" id="game">Game</li>
                     </ul>
                 </nav>
@@ -166,11 +169,12 @@
             </table>
 
             <!-- TODO: change from div to modal dialog -->
-            <div id=about_screen>
+            <div id="about_screen">
                 about.....
             </div>
         </div>
 
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <div id="footer">
             <p>
                 This is a game made for the course Internet Development Enviorments. <br>

@@ -18,18 +18,14 @@ $(document).ready(function() {
     })
 
     $("#register_btn").click(function() {
-        let fname = $("#register_fname").val()
-        let lname = $("#register_lname").val()
         let uname = $("#register_uname").val()
-        let email = $("#register_email").val()
-        let bdate = $("#register_bdate").val()
         let pass  = $("#register_pass").val()
         
         if(valid_registration){
             let user  = {username: uname, password: pass}
             users.push(user)
             window.alert("registered successfully")
-            toggle_off()
+            toggle_all_off()
             $("#login_screen").show(700)
         }
         else{
@@ -44,6 +40,6 @@ function login(){
     $("#game").show()
     $("#login").hide()
     $("#register").hide()
-    toggle_off()
+    toggle_all_off()
     $("#settings_screen").show(700)
 }
