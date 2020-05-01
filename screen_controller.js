@@ -1,23 +1,42 @@
 var curr_screen = "welcome"
 
 $(document).ready(function() {
+    $("html").css("visibility", "visible");
     toggle_all_off(0)
-    $("#game").hide()
+    // $("#game").hide()
     $("#welcome_screen").show(0)
 
     set_screen("welcome")
     set_screen("register")
     set_screen("login")
-    set_screen("game")
 
     $("#about").click(function() {
-        window.alert("oops... not implemented yet...")
+        $(window).on("keydown", function(e){
+            if(e.key == "Escape"){
+                $("#about_screen").modal("hide")
+            }
+        })
     })
 
-    $("#play").click(function() {
-        $("#game_screen").show(700)
-        Start() // start the packman game
+    $("#game").click(function() {
+        if(curr_screen != "settings"){
+            toggle_all_off(700)
+            $("#settings_screen").show(700)
+            curr_screen = "settings"
+        }
+        $("#play").click(function() {
+            toggle_all_off(700)
+            $("#game_screen").show(700)
+            curr_screen = "game"
+            sync_settings()
+            Start() // start the packman game
+            $("#replay").click(function(){
+                Start()
+            })
+        })
     })
+
+    
 })
 
 function set_screen(screen){
@@ -38,4 +57,15 @@ function toggle_all_off(speed) {
     $("#game_screen").hide(speed)
     $("#settings_screen").hide(speed)
     $("#game_screen").hide(speed)
+}
+
+function sync_settings() {
+    $("#up_stat").text($("#up").text())
+    $("#down_stat").text($("#down").text())
+    $("#left_stat").text($("#left").text())
+    $("#right_stat").text($("#right").text())
+
+    document.getElementById("5_points_stat").style.backgroundColor = $("#5_points").val()
+    document.getElementById("15_points_stat").style.backgroundColor = $("#15_points").val()
+    document.getElementById("25_points_stat").style.backgroundColor = $("#25_points").val()
 }

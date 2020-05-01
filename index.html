@@ -3,14 +3,17 @@
 
     <head>
         <link rel="stylesheet" type="text/css" href="style.css" />
-        <script src="./jquery-3.4.1.slim.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <!-- <script src="./jquery-3.4.1.slim.min.js"></script> -->
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
         <script type="text/javascript" src="./app.js"></script>
         <script type="text/javascript" src="screen_controller.js"></script>
         <script type="text/javascript" src="game_settings.js"></script>
         <script type="text/javascript" src="auth.js"></script>
         <script type="text/javascript" src="register_validation.js"></script>
-        
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     </head>
 
     <body>
@@ -18,10 +21,10 @@
             <header id="header">
                 <h1>Pack-man application</h1>
                 <img src="rec/logo.png" />
-                <h4>
+                <!-- <h4>
                     Hod twito - 315230482 <br>
                     Shoham Zarfati - 318501418
-                </h4>
+                </h4> -->
             </header>
 
 
@@ -31,7 +34,7 @@
                         <li class="menu" id="welcome">Welcome</li>
                         <li class="menu" id="register">Register</li>
                         <li class="menu" id="login">Login</li>
-                        <li class="menu" id="about" data-toggle="modal" data-target="#about_screen">About</li>
+                        <li class="menu" id="about"data-toggle="modal" data-target="#about_screen">About</li>
                         <li class="menu" id="game">Game</li>
                     </ul>
                 </nav>
@@ -103,78 +106,150 @@
                 <button id="login_btn" type="button">Login</button>
             </div>
 
-            <table id="settings&game" style="width:100%">
+
+            <table id="settings_screen">
                 <tr>
-                  <td id="game_screen">
-                    <div id="score">
-                        <label for="lblScore">SCORE:</label>
-                        <input id="lblScore" type="text" />
-                    </div>
-                    <div id="time">
-                        <label for="lblTime">TIME:</label>
-                        <input id="lblTime" type="text" />
-                    </div>
-                    <div>
-                        <canvas id="canvas" height="600" width="600"></canvas>
-                    </div>
-                  </td>
-                  <td id="settings_screen">
-                    <form id="settings_form">
-                        <table id="settings_table">
+                    <td id="btns_cntrl">
+                        <table id="btns_cntrl_table">
+                            <tr id="up_clmn">
+                                <td><input type="button" value="UP" id="up_btn"></td>
+                                <td><p id="up"></p></td>
+                            </tr>
+                            <tr id="down_clmn">
+                                <td><input type="button" value="DOWN" id="down_btn"></td>
+                                <td><p id="down"></p></td>
+                            </tr>
+                            <tr id="left_clmn">
+                                <td><input type="button" value="LEFT" id="left_btn"></td>
+                                <td><p id="left"></p></td>
+                            </tr>
+                            <tr id="right_clmn">
+                                <td><input type="button" value="RIGHT" id="right_btn"></td>
+                                <td><p id="right"></p></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <label for="5_points">choose color for 5 points rewards: </label>
+                        <input type="color" id="5_points">
+                    </td>
+                    <td>
+                        <label for="15_points">choose color for 15 points rewards: </label>
+                        <input type="color" id="15_points">
+                    </td>
+                    <td>
+                        <label for="25_points">choose color for 25 points rewards: </label>
+                        <input type="color" id="25_points">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label for="r_num">choose how many points: </label>
+                        <input type="number" id="r_num" min="50" max="90">
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <label for="time_picker">choose how much time for a game: </label>
+                        <input type="number" id="time_picker" min="60" max="600">
+                    </td>                  
+                <tr>
+                    <td>
+                        <label for="monster_picker">choose how many ghosts you'll fight: </label>
+                        <input type="number" id="monster_picker" min="1" max="4">
+                    </td>
+                </tr>
+                <tr>
+                    <td><button id="random" type="button">random</button></td>
+                    <td><button id="play" type="button">play</button></td>
+                </tr>
+            </table>
+                       
+            <table id="game_screen" style="width:100%">
+                <tr>
+                    <td id="game_td">
+                        <div id="score">
+                            <label for="lblScore">SCORE:</label>
+                            <input id="lblScore" type="text" />
+                        </div>
+                        <div id="time">
+                            <label for="lblTime">TIME:</label>
+                            <input id="lblTime" type="text" />
+                        </div>
+                        <div>
+                            <canvas id="canvas" height="600" width="600"></canvas>
+                        </div>
+                    </td>
+                    <td>
+                        <table id="settings_screen_stat">
                             <tr>
-                                <td id="btns_cntrl">
-                                    <table id="btns_cntrl_table">
-                                        <tr id="up_clmn">
-                                            <td><input type="button" value="UP" id="up_btn"></td>
-                                            <td><p id="up"></p></td>
+                                <td id="btns_cntrl_stat">
+                                    <table id="btns_cntrl_table_stat">
+                                        <tr id="up_clmn_stat">
+                                            <td>UP: </td>
+                                            <td id="up_stat"></td>
                                         </tr>
-                                        <tr id="down_clmn">
-                                            <td><input type="button" value="DOWN" id="down_btn"></td>
-                                            <td><p id="down"></p></td>
+                                        <tr id="down_clmn_stat">
+                                            <td>DOWN: </td>
+                                            <td id="down_stat"></td>
                                         </tr>
-                                        <tr id="left_clmn">
-                                            <td><input type="button" value="LEFT" id="left_btn"></td>
-                                            <td><p id="left"></p></td>
+                                        <tr id="left_clmn_stat">
+                                            <td>LEFT: </td>
+                                            <td id="left_stat"></td>
                                         </tr>
-                                        <tr id="right_clmn">
-                                            <td><input type="button" value="RIGHT" id="right_btn"></td>
-                                            <td><p id="right"></p></td>
+                                        <tr id="right_clmn_stat">
+                                            <td>RIGHT</td>
+                                            <td id="right_stat"></td>
                                         </tr>
                                     </table>
                                 </td>
                             </tr>
-                            
-                            <label for="r_num">choose how many points: </label>
-                            <input type="number" id="r_num" min="50" max="90">
-                            
-                            <label for="5_points">choose color for 5 points rewards: </label>
-                            <input type="color" id="5_points">
-                            <label for="15_points">choose color for 15 points rewards: </label>
-                            <input type="color" id="15_points">
-                            <label for="25_points">choose color for 25 points rewards: </label>
-                            <input type="color" id="25_points">
-        
-                            <label for="time_picker">choose how much time for a game: </label>
-                            <input type="number" id="time_picker" min="60" max="600">
-        
-                            <label for="monster_picker">choose how many ghosts you'll fight: </label>
-                            <input type="number" id="monster_picker" min="1" max="4">
-        
-                            <button id="random" type="button">random</button>
-                            <button id="play" type="button">play</button>
+                            <tr>
+                                <td>
+                                    5 point color: <p class="show_color" id="5_points_stat"></p>
+                                </td>
+                                <td>
+                                    15 point color: <p class="show_color" id="15_points_stat"></p>
+                                </td>
+                                <td>
+                                    25 point color: <p class="show_color" id="25_points_stat"></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><button id="replay" type="button">Re-play</button></td>
+                            </tr>
                         </table>
-                    </form>
-                  </td>
+                    </td>
                 </tr>
             </table>
 
-            <!-- TODO: change from div to modal dialog -->
-            <div id="about_screen">
-                about.....
+            <div id="about_screen" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-lg">
+            
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Some text in the modal.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            
+                </div>
             </div>
+
         </div>
 
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <div id="footer">
             <p>
                 This is a game made for the course Internet Development Enviorments. <br>
