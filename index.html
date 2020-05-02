@@ -3,11 +3,14 @@
 
     <head>
         <link rel="stylesheet" type="text/css" href="style.css" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
         <!-- <script src="./jquery-3.4.1.slim.min.js"></script> -->
         
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        
 
         <script type="text/javascript" src="./app.js"></script>
         <script type="text/javascript" src="screen_controller.js"></script>
@@ -16,84 +19,102 @@
         <script type="text/javascript" src="register_validation.js"></script>
     </head>
 
-    <body>
-        <header id="menu">
-            <header id="header">
-                <h1>Pack-man application</h1>
-                <img src="rec/logo.png" />
-                <!-- <h4>
-                    Hod twito - 315230482 <br>
-                    Shoham Zarfati - 318501418
-                </h4> -->
-            </header>
-
-
-            <div id="menu_div">
-                <nav>
-                    <ul>
-                        <li class="menu" id="welcome">Welcome</li>
-                        <li class="menu" id="register">Register</li>
-                        <li class="menu" id="login">Login</li>
-                        <li class="menu" id="about"data-toggle="modal" data-target="#about_screen">About</li>
-                        <li class="menu" id="game">Game</li>
-                    </ul>
-                </nav>
+    <body>    
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">
+                <img src="rec/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                Pac Man
+            </a>
+            <div class="navbar-text ml-auto">
+                Hod twito - 315230482 <br>
+                Shoham Zarfati - 318501418
             </div>
-        </header>
+        </nav>
+        
 
-        <div id="content">
-            <div id="welcome_screen">
-                welcome screen...
+        <div class="p-5 container">
+            <nav class="nav nav-pills nav-justified">
+                <a id="welcome" class="nav-item nav-link active" href="#">Welcome</a>
+                <a id="register" class="nav-item nav-link" href="#">Register</a>
+                <a id="login" class="nav-item nav-link" href="#">Login</a>
+                <a id="about" data-toggle="modal" data-target="#about_screen" class="nav-item nav-link" href="#">About</a>
+                <a id="game" class="nav-item nav-link" href="#">Game</a>
+              </nav>
+
+        </div>
+
+        <div id="content" class="container justify-content-center">
+            <div id="welcome_screen" class="text-justify content">
+                <p class="text-center">
+                    Welcome To Pac Man!
+                    This is out submission for the second assignment of the course Internet Development Enviorments.
+                    We used a lot of jquery and bootstrap in this project, and everything is client rendered on a canvas
+                </p>
             </div>
 
-            <div id="register_screen">
+            <div id="register_screen" class="container">
                 <!-- #region fname -->
-                <label class="registartion_lable" for="fname"><b>First Name*</b></label>
-                <input class="registartion_input" id="register_fname" type="text" placeholder="Enter First Name" name="fname" minlength="3" maxlength="50" required>
-                <span class="registration_error" id="fname_err_0">this is required!</span>
-                <span class="registration_error" id="fname_err_1">invalid name- must be at least 3 characters</span>
-                <span class="registration_error" id="fname_err_2">invalid name- first name can't contain non-letters characters</span>
+                <div class="row flex justify-content-center">
+                    <label class="registartion_lable" for="fname"><b>First Name*</b></label>
+                    <input class="registartion_input" id="register_fname" type="text" placeholder="Enter First Name" name="fname" minlength="3" maxlength="50" required>
+                    <span class="registration_error" id="fname_err_0">this is required!</span>
+                    <span class="registration_error" id="fname_err_1">invalid name- must be at least 3 characters</span>
+                    <span class="registration_error" id="fname_err_2">invalid name- first name can't contain non-letters characters</span>
+                </div>
+                
                 <!-- #endregion -->
                 <br>
                 <!-- #region lname -->
-                <label class="registartion_lable" for="lname"><b>Last Name*</b></label>
-                <input class="registartion_input" id="register_lname" type="text" placeholder="Enter Last Name" name="lname" minlength="3" maxlength="50" required>
-                <span class="registration_error" id="lname_err_0">this is required!</span>
-                <span class="registration_error" id="lname_err_1">invalid name- must be at least 3 characters</span>
-                <span class="registration_error" id="lname_err_2">invalid name- last name can't contain non-letters characters</span>
+                <div class="row flex justify-content-center">
+                    <label class="registartion_lable" for="lname"><b>Last Name*</b></label>
+                    <input class="registartion_input " id="register_lname" type="text" placeholder="Enter Last Name" name="lname" minlength="3" maxlength="50" required>
+                    <span class="registration_error" id="lname_err_0">this is required!</span>
+                    <span class="registration_error" id="lname_err_1">invalid name- must be at least 3 characters</span>
+                    <span class="registration_error" id="lname_err_2">invalid name- last name can't contain non-letters characters</span>
+                </div>
                 <!-- #endregion -->
                 <br>
                 <!-- #region uname -->
-                <label class="registartion_lable" for="uname"><b>Username*</b></label>
-                <input class="registartion_input" id="register_uname" type="text" placeholder="Enter Username" name="uname" minlength="3" maxlength="20" required>
-                <span class="registration_error" id="uname_err_0">this is required!</span>
-                <span class="registration_error" id="uname_err_1">username invalid- must be at least 3 characters</span>
-                <span class="registration_error" id="uname_err_2">username invalid- username cant start with a number</span>
-                <span class="registration_error" id="uname_err_3">username invalid- username cant contain special characters</span>
-                <span class="registration_error" id="uname_err_4">username already taken</span>
+                <div class="row flex justify-content-center">
+                    <label class="registartion_lable" for="uname"><b>Username*</b></label>
+                    <input class="registartion_input" id="register_uname" type="text" placeholder="Enter Username" name="uname" minlength="3" maxlength="20" required>
+                    <span class="registration_error" id="uname_err_0">this is required!</span>
+                    <span class="registration_error" id="uname_err_1">username invalid- must be at least 3 characters</span>
+                    <span class="registration_error" id="uname_err_2">username invalid- username cant start with a number</span>
+                    <span class="registration_error" id="uname_err_3">username invalid- username cant contain special characters</span>
+                    <span class="registration_error" id="uname_err_4">username already taken</span>
+                </div>
                 <!-- #endregion -->
                 <br>
                 <!-- #region email -->
-                <label class="registartion_lable" for="email"><b>email*</b></label>
-                <input class="registartion_input" id="register_email" type="email" placeholder="someone@mail.com" name="email" required>
-                <span class="registration_error" id="email_err_0">this is required!</span>
-                <span class="registration_error" id="email_err_1">invalid email- don't look like an email</span>
+                <div class="row flex justify-content-center">
+                    <label class="registartion_lable" for="email"><b>email*</b></label>
+                    <input class="registartion_input" id="register_email" type="email" placeholder="someone@mail.com" name="email" required>
+                    <span class="registration_error" id="email_err_0">this is required!</span>
+                    <span class="registration_error" id="email_err_1">invalid email- don't look like an email</span>
+                </div>
                 <!-- #endregion -->
                 <br>
                 <!-- #region bdate -->
-                <label class="registartion_lable" for="bdate"><b>Birth Date*</b></label>
-                <input id="register_bdate" type="date" name="bdate" required>
+                <div class="row flex justify-content-center">
+                    <label class="registartion_lable" for="bdate"><b>Birth Date*</b></label>
+                    <input id="register_bdate" type="date" name="bdate" required>
+                </div>
                 <!-- #endregion -->
                 <br>
                 <!-- #region pass -->
-                <label class="registartion_lable" for="pass"><b>Password*</b></label>
-                <input class="registartion_input" id="register_pass" type="password" placeholder="Enter Password" name="pass" minlength="6" maxlength="50" required>
-                <span class="registration_error" id="pass_err_0">this is required!</span>
-                <span class="registration_error" id="pass_err_1">password too short</span>
-                <span class="registration_error" id="pass_err_2">password must contain at least one number and one letter</span>
+                <div class="row flex justify-content-center">
+                    <label class="registartion_lable" for="pass"><b>Password*</b></label>
+                    <input class="registartion_input" id="register_pass" type="password" placeholder="Enter Password" name="pass" minlength="6" maxlength="50" required>
+                    <span class="registration_error" id="pass_err_0">this is required!</span>
+                    <span class="registration_error" id="pass_err_1">password too short</span>
+                    <span class="registration_error" id="pass_err_2">password must contain at least one number and one letter</span>
+                </div>
                 <!-- #endregion -->
                 <br>
-                <button id="register_btn" type="button">Register</button>
+                <div class="row flex justify-content-center">
+                    <button id="register_btn" type="button" class="btn btn-success ">Register</button>
+                </div>
             </div>
 
             <div id="login_screen">
@@ -250,13 +271,12 @@
 
         </div>
 
-        <div id="footer">
-            <p>
-                This is a game made for the course Internet Development Enviorments. <br>
-                The source code is available at: <a href="https://github.com/SISE-Web-Development-Environments/assignment2-hod-shoham">
-                https://github.com/SISE-Web-Development-Environments/assignment2-hod-shoham</a>
-            </p>
-        </div>
+        <footer id="footer">
+            This is a game made for the course Internet Development Enviorments. <br>
+            The source code is available at: <a href="https://github.com/SISE-Web-Development-Environments/assignment2-hod-shoham">
+            https://github.com/SISE-Web-Development-Environments/assignment2-hod-shoham</a>
+        </footer>
+    
 
     </body>
 

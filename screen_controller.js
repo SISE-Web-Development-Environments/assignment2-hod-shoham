@@ -10,6 +10,11 @@ $(document).ready(function() {
     set_screen("register")
     set_screen("login")
 
+    $(".nav .nav-link").on("click", function(){
+        $(".nav").find(".active").removeClass("active");
+        $(this).addClass("active");
+     });
+
     $("#about").click(function() {
         $(window).on("keydown", function(e){
             if(e.key == "Escape"){

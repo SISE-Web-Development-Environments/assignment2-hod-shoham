@@ -1,6 +1,8 @@
 html { visibility:hidden; }
 
 
+
+
 #menu {
     position: sticky;
     top: 0;
@@ -33,6 +35,7 @@ html { visibility:hidden; }
 
 .registration_error{
     color: red;
+    margin-left: 10px;
 }
 
 .show_color {
