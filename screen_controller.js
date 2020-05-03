@@ -30,14 +30,20 @@ $(document).ready(function() {
             curr_screen = "settings"
         }
         $("#play").click(function() {
-            toggle_all_off(700)
-            $("#game_screen").show(700)
-            curr_screen = "game"
-            sync_settings()
-            Start() // start the packman game
-            $("#replay").click(function(){
-                Start()
-            })
+            if(r_num == "" || time_for_game == "" || monsters_counter == "" ||
+            color_5_points == "#ffffff" || color_15_points == "#ffffff" || color_25_points == "#ffffff" ){
+                window.alert("can't start the game without settings!")
+            }
+            else{
+                toggle_all_off(700)
+                $("#game_screen").show(700)
+                curr_screen = "game"
+                sync_settings()
+                Start() // start the packman game
+                $("#replay").click(function(){
+                    Start()
+                })
+            }
         })
     })
 

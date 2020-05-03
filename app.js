@@ -4,26 +4,29 @@ var board;
 var score;
 var pac_color;
 var start_time;
-var time_elapsed;
+var time_remaining;
 var interval;
+var points_remaining;
+var empty_cells;
+
+var cell_type = {empty: 0, wall: 1, pac: 2, point_5: 3, point_15: 4, point_25: 5}
+
+
 
 $(document).ready(function() {
     context = canvas.getContext("2d");
-    //Start();
 });
 
 function Start() {
     board = new Array();
     score = 0;
+    points_remaining = r_num;
     pac_color = "yellow";
-    var cnt = 100;
-    var food_remain = 50;
-    var pacman_remain = 1;
     start_time = new Date();
-    for (var i = 0; i < 10; i++) {
+    for (let i = 0; i < 10; i++) {
         board[i] = new Array();
-        //put obstacles in (i=3,j=3) and (i=3,j=4) and (i=3,j=5), (i=6,j=1) and (i=6,j=2)
-        for (var j = 0; j < 10; j++) {
+        for (let j = 0; j < 10; j++) {
+            // put walls
             if (
                 (i == 3 && j == 3) ||
                 (i == 3 && j == 4) ||
@@ -31,29 +34,29 @@ function Start() {
                 (i == 6 && j == 1) ||
                 (i == 6 && j == 2)
             ) {
-                board[i][j] = 4;
+                board[i][j] = cell_type.wall;
             } else {
-                var randomNum = Math.random();
-                if (randomNum <= (1.0 * food_remain) / cnt) {
-                    food_remain--;
-                    board[i][j] = 1;
-                } else if (randomNum < (1.0 * (pacman_remain + food_remain)) / cnt) {
-                    shape.i = i;
-                    shape.j = j;
-                    pacman_remain--;
-                    board[i][j] = 2;
-                } else {
-                    board[i][j] = 0;
-                }
-                cnt--;
+                board[i][j] = cell_type.empty;
             }
         }
     }
-    while (food_remain > 0) {
-        var emptyCell = findRandomEmptyCell(board);
-        board[emptyCell[0]][emptyCell[1]] = 1;
-        food_remain--;
+    empty_cells = get_all_empty_cells(board);
+
+    let pac_pos = set_random_empty_cell(board, cell_type.pac);
+    shape.i = pac_pos[0];
+    shape.j = pac_pos[1];
+
+
+    for(let i = 0; i < Math.floor(points_remaining * 0.6); i++) {
+        set_random_empty_cell(board, cell_type.point_5);
     }
+    for(let i = 0; i < Math.floor(points_remaining * 0.3); i++) {
+        set_random_empty_cell(board, cell_type.point_15);
+    }
+    for(let i = 0; i < Math.floor(points_remaining * 0.1); i++) {
+        set_random_empty_cell(board, cell_type.point_25);
+    }
+
     keysDown = {};
     addEventListener(
         "keydown",
@@ -72,41 +75,51 @@ function Start() {
     interval = setInterval(UpdatePosition, 100);
 }
 
-function findRandomEmptyCell(board) {
-    var i = Math.floor(Math.random() * 9 + 1);
-    var j = Math.floor(Math.random() * 9 + 1);
-    while (board[i][j] != 0) {
-        i = Math.floor(Math.random() * 9 + 1);
-        j = Math.floor(Math.random() * 9 + 1);
+function get_all_empty_cells(board){
+    let ans = [];
+    for(let i = 0; i < board.length; i++){
+        for(let j = 0; j < board[0].length; j++){
+            if(board[i][j] == cell_type.empty){
+                ans.push([i, j]);
+            }
+        }
     }
-    return [i, j];
+    return ans;
+}
+
+function set_random_empty_cell(board, new_cell_type) {
+    let empty_cell_id = Math.floor(Math.random() * empty_cells.length);
+    let empty_cell = empty_cells[empty_cell_id];
+    empty_cells.splice(empty_cell_id, 1);
+    board[empty_cell[0]][empty_cell[1]] = new_cell_type;
+    return empty_cell;
 }
 
 function GetKeyPressed() {
-    if (keysDown[38]) {
-        return 1;
+    if (keysDown[directions[directions_enum["up"]]]) {
+        return "up";
     }
-    if (keysDown[40]) {
-        return 2;
+    if (keysDown[directions[directions_enum["down"]]]) {
+        return "down";
     }
-    if (keysDown[37]) {
-        return 3;
+    if (keysDown[directions[directions_enum["left"]]]) {
+        return "left";
     }
-    if (keysDown[39]) {
-        return 4;
+    if (keysDown[directions[directions_enum["right"]]]) {
+        return "right";
     }
 }
 
 function Draw() {
     canvas.width = canvas.width; //clean board
     lblScore.value = score;
-    lblTime.value = time_elapsed;
+    lblTime.value = time_remaining;
     for (var i = 0; i < 10; i++) {
         for (var j = 0; j < 10; j++) {
             var center = new Object();
             center.x = i * 60 + 30;
             center.y = j * 60 + 30;
-            if (board[i][j] == 2) {
+            if (board[i][j] == cell_type.pac) {
                 context.beginPath();
                 context.arc(center.x, center.y, 30, 0.15 * Math.PI, 1.85 * Math.PI); // half circle
                 context.lineTo(center.x, center.y);
@@ -116,15 +129,25 @@ function Draw() {
                 context.arc(center.x + 5, center.y - 15, 5, 0, 2 * Math.PI); // circle
                 context.fillStyle = "black"; //color
                 context.fill();
-            } else if (board[i][j] == 1) {
-                context.beginPath();
-                context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
-                context.fillStyle = "black"; //color
-                context.fill();
-            } else if (board[i][j] == 4) {
+            } else if (board[i][j] == cell_type.wall) {
                 context.beginPath();
                 context.rect(center.x - 30, center.y - 30, 60, 60);
                 context.fillStyle = "grey"; //color
+                context.fill();
+            } else if (board[i][j] == cell_type.point_5) {
+                context.beginPath();
+                context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
+                context.fillStyle = color_5_points; //color
+                context.fill();
+            } else if (board[i][j] == cell_type.point_15) {
+                context.beginPath();
+                context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
+                context.fillStyle = color_15_points; //color
+                context.fill();
+            } else if (board[i][j] == cell_type.point_25) {
+                context.beginPath();
+                context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
+                context.fillStyle = color_25_points; //color
                 context.fill();
             }
         }
@@ -133,37 +156,45 @@ function Draw() {
 
 function UpdatePosition() {
     board[shape.i][shape.j] = 0;
-    var x = GetKeyPressed();
-    if (x == 1) {
-        if (shape.j > 0 && board[shape.i][shape.j - 1] != 4) {
+    let x = GetKeyPressed();
+    if (x == "up") {
+        if (shape.j > 0 && board[shape.i][shape.j - 1] != cell_type.wall) {
             shape.j--;
         }
     }
-    if (x == 2) {
-        if (shape.j < 9 && board[shape.i][shape.j + 1] != 4) {
+    if (x == "down") {
+        if (shape.j < 9 && board[shape.i][shape.j + 1] != cell_type.wall) {
             shape.j++;
         }
     }
-    if (x == 3) {
-        if (shape.i > 0 && board[shape.i - 1][shape.j] != 4) {
+    if (x == "left") {
+        if (shape.i > 0 && board[shape.i - 1][shape.j] != cell_type.wall) {
             shape.i--;
         }
     }
-    if (x == 4) {
-        if (shape.i < 9 && board[shape.i + 1][shape.j] != 4) {
+    if (x == "right") {
+        if (shape.i < 9 && board[shape.i + 1][shape.j] != cell_type.wall) {
             shape.i++;
         }
     }
-    if (board[shape.i][shape.j] == 1) {
-        score++;
+    if (board[shape.i][shape.j] == cell_type.point_5) {
+        score += 5;
+        points_remaining--;
+    }
+    if (board[shape.i][shape.j] == cell_type.point_15) {
+        score += 15;
+        points_remaining--;
+    }
+    if (board[shape.i][shape.j] == cell_type.point_25) {
+        score += 25;
+        points_remaining--;
     }
     board[shape.i][shape.j] = 2;
-    var currentTime = new Date();
-    time_elapsed = (currentTime - start_time) / 1000;
-    if (score >= 20 && time_elapsed <= 10) {
-        pac_color = "green";
-    }
-    if (score == 50) {
+    let currentTime = new Date();
+    time_remaining = time_for_game - (currentTime - start_time) / 1000;
+    
+    // game over
+    if (points_remaining == 0 || time_remaining <= 0) {
         window.clearInterval(interval);
         window.alert("Game completed");
     } else {
