@@ -29,22 +29,30 @@ $(document).ready(function() {
             $("#settings_screen").show(700)
             curr_screen = "settings"
         }
-        $("#play").click(function() {
-            if(r_num == "" || time_for_game == "" || monsters_counter == "" ||
-            color_5_points == "#ffffff" || color_15_points == "#ffffff" || color_25_points == "#ffffff" ){
-                window.alert("can't start the game without settings!")
-            }
-            else{
-                toggle_all_off(700)
-                $("#game_screen").show(700)
-                curr_screen = "game"
-                sync_settings()
-                Start() // start the packman game
-                $("#replay").click(function(){
-                    Start()
-                })
-            }
-        })
+    })
+
+    $("#play").click(function() {
+        if(r_num == "" || time_for_game == "" || monsters_counter == "" ||
+        color_5_points == "#ffffff" || color_15_points == "#ffffff" || color_25_points == "#ffffff" ){
+            window.alert("can't start the game without settings!")
+        }
+        else if(time_for_game < 60 || time_for_game > 600 ||
+                monsters_counter < 1 || monsters_counter > 4|| 
+                r_num < 50 || r_num > 90){
+                    window.alert("can't start the game with those settings!")
+                }
+        else{
+            toggle_all_off(700)
+            $("#game_screen").show(700)
+            curr_screen = "game"
+            sync_settings()
+            Start() // start the packman game
+            
+        }
+    })
+    
+    $("#replay").click(function(){
+        Start()
     })
 
     
