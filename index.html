@@ -14,6 +14,9 @@
         <script type="text/javascript" src="register_validation.js"></script>
         <script type="text/javascript" src="load_images.js"></script>
         <script type="text/javascript" src="app.js"></script>
+        <audio id="bg_sound">
+            <source src="rec/pac_sound.mp3" type="audio/mpeg">
+        </audio>
     </head>
 
     <body>    
@@ -107,7 +110,7 @@
                 <!-- #region bdate -->
                 <div class="row">
                     <label class="registartion_lable col-sm-2" for="bdate"><b>Birth Date*</b></label>
-                    <input id="register_bdate form-control col-sm" type="date" name="bdate" required>
+                    <input id="register_bdate" class="form-control col-sm-4" type="date" name="bdate" required>
                 </div>
                 <!-- #endregion -->
                 <br>

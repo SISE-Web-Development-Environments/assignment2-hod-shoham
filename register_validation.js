@@ -6,51 +6,51 @@ var valid_bdate = false
 var valid_pass  = false
 
 $(document).ready(function() {
-    $(".registration_error").hide()
+    $(".registration_error").hide(0)
 
-    $("#register_fname").on("input", function(){
+    $("#register_fname").on("input", function(event){
         valid_fname = true
         let fname = $("#register_fname").val()
-        let fname_validation = check_name(fname)
+        let fname_validation = check_name(event.target.value)
         hide_errors("fname", 3)
         if(fname_validation != "9"){
-            $("#fname_err_" + fname_validation).show(700)
+            $("#fname_err_" + fname_validation).show(200)
             valid_fname = false
         }
         valid_reg()
     })
 
-    $("#register_lname").on("input", function(){
+    $("#register_lname").on("input", function(event){
         valid_lname = true
-        let lname = $("#register_lname").val()
-        let lname_validation = check_name(lname)
+        // let lname = $("#register_lname").val()
+        let lname_validation = check_name(event.target.value)
         hide_errors("lname", 3)
         if(lname_validation != "9"){
-            $("#lname_err_" + lname_validation).show(700)
+            $("#lname_err_" + lname_validation).show(200)
             valid_lname = false
         }
         valid_reg()
     })
 
-    $("#register_uname").on("input", function(){
+    $("#register_uname").on("input", function(event){
         valid_uname = true
-        let uname = $("#register_uname").val()
-        let uname_validation = check_uname(uname)
+        // let uname = $("#register_uname").val()
+        let uname_validation = check_uname(event.target.value)
         hide_errors("uname", 5)
         if(uname_validation != "9"){
-            $("#uname_err_" + uname_validation).show(700)
+            $("#uname_err_" + uname_validation).show(200)
             valid_uname = false
         }
         valid_reg()
     })
 
-    $("#register_email").on("input", function(){
+    $("#register_email").on("input", function(event){
         valid_email = true
-        let email = $("#register_email").val()
-        let email_validation = check_email(email)
+        // let email = $("#register_email").val()
+        let email_validation = check_email(event.target.value)
         hide_errors("email", 2)
         if(email_validation != "9"){
-            $("#email_err_" + email_validation).show(700)
+            $("#email_err_" + email_validation).show(200)
             valid_email = false
         }
         valid_reg()
@@ -61,13 +61,13 @@ $(document).ready(function() {
         valid_reg()
     })
 
-    $("#register_pass").on("input", function(){
+    $("#register_pass").on("input", function(event){
         valid_pass = true
-        let pass = $("#register_pass").val()
-        let pass_validation = check_pass(pass)
+        // let pass = $("#register_pass").val()
+        let pass_validation = check_pass(event.target.value)
         hide_errors("pass", 3)
         if(pass_validation != "9"){
-            $("#pass_err_" + pass_validation).show(700)
+            $("#pass_err_" + pass_validation).show(200)
             valid_pass = false
         }
         valid_reg()
@@ -116,7 +116,7 @@ function check_pass(pass){
 function hide_errors(field, num_of_errors){
     var i
     for(i = 0; i < num_of_errors; i++){
-        $("#" + field + "_err_" + i).hide()
+        $("#" + field + "_err_" + i).hide(0)
     }
 }
 

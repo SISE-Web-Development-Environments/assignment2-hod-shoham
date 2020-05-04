@@ -29,6 +29,10 @@ $(document).ready(function() {
             window.alert("registered successfully")
             toggle_all_off()
             $("#login_screen").show(700)
+
+            $(".nav").find(".active").removeClass("active");
+            $("#login").addClass("active");
+            curr_screen = "login"
         }
         else{
             window.alert("something isn't right here...")
@@ -36,11 +40,15 @@ $(document).ready(function() {
     })
 })
 
-function login(){
+function login() {
     logged_in = true
     $("#game").show()
     $("#login").hide()
     $("#register").hide()
     toggle_all_off()
     $("#settings_screen").show(700)
+
+    curr_screen = "settings"
+    $(".nav").find(".active").removeClass("active");
+    $("#game").addClass("active");
 }

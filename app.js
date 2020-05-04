@@ -59,12 +59,12 @@ function Start() {
     board = JSON.parse(JSON.stringify(board_layout));
     pac_lives = 5;
     round_time = parseInt(time_for_game)
-    background_music = new Audio("/rec/pac_sound.mp3");
-    background_music.addEventListener("ended", function() {
+    var bg_sound = document.getElementById("bg_sound")
+    bg_sound.addEventListener("ended", function() {
         this.currentTime = 0;
         this.play();
     }, false)
-    background_music.play()
+    bg_sound.play()
     init_star();
     init_characters();
 
@@ -149,11 +149,9 @@ function GetKeyPressed() {
 function tick() {
     if (curr_screen != "game") {
         window.clearInterval(interval);
-        background_music.pause()
-        background_music.currentTime = 0
+        bg_sound.pause()
+        bg_sound.currentTime = 0
     }
-
-
     update_packman()
     update_ghosts()
     update_star()
