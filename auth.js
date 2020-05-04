@@ -44,6 +44,7 @@ function login() {
     logged_in = true
     $("#game").show()
     $("#login").hide()
+    $("#welcome").hide()
     $("#register").hide()
     toggle_all_off()
     $("#settings_screen").show(700)
