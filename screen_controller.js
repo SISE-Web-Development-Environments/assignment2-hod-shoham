@@ -12,6 +12,8 @@ $(document).ready(function() {
 
     $("#welcome_register").click(function() {
         if (curr_screen != "register") {
+            $(".nav").find(".active").removeClass("active");
+            $("#register").addClass("active");
             toggle_all_off(700)
             $("#register_screen").show(700)
             curr_screen = "register"
@@ -20,6 +22,8 @@ $(document).ready(function() {
 
     $("#welcome_login").click(function() {
         if (curr_screen != "login") {
+            $(".nav").find(".active").removeClass("active");
+            $("#login").addClass("active");
             toggle_all_off(700)
             $("#login_screen").show(700)
             curr_screen = "login"
@@ -27,8 +31,10 @@ $(document).ready(function() {
     })
 
     $(".nav .nav-link").on("click", function(){
-        $(".nav").find(".active").removeClass("active");
-        $(this).addClass("active");
+        if ($(this).attr('id') != "about") {
+            $(".nav").find(".active").removeClass("active");
+            $(this).addClass("active");
+        }
      });
 
     $("#about").click(function() {

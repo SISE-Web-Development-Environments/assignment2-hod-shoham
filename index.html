@@ -20,7 +20,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">
                 <img src="rec/logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-                Pac Man
+                Pacman
             </a>
             <div class="navbar-text ml-auto">
                 Hod twito - 315230482 <br>
@@ -56,7 +56,7 @@
                 <div class="row flex justify-content-center">
                     <button id="welcome_register" type="button" class="btn btn-info col-sm-2">Register</button>
                     <span width=10px class="col-sm-1"></span>
-                    <button id="welcome_register" type="button" class="btn btn-info col-sm-2">Login</button>     
+                    <button id="welcome_login" type="button" class="btn btn-info col-sm-2">Login</button>     
                 </div>
                 <br>
             </div>
@@ -269,23 +269,27 @@
                 </tr>
             </table>
 
-            <div id="about_screen" class="modal fade" role="dialog">
-                <div class="modal-dialog modal-lg">
-            
-                <!-- Modal content-->
-                <div class="modal-content">
+            <div id="about_screen" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Modal Header</h4>
+                      <h5 class="modal-title">About</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
                     </div>
                     <div class="modal-body">
-                        <p>Some text in the modal.</p>
+                      <p>
+                          This website was created by shoham and Hod.
+                          We used jquery for the logic and bootstrap for the style.
+                          The game uses a canvas and draws mostly images (svg) such as the pacman 
+                          and the ghost, but also draws native polygons for the rewards.
+                        </p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
-                </div>
-            
+                  </div>
                 </div>
             </div>
 

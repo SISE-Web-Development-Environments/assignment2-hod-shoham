@@ -37,7 +37,6 @@ $(document).ready(function() {
 })
 
 function login(){
-    alert("doneit")
     logged_in = true
     $("#game").show()
     $("#login").hide()
