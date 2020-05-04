@@ -3,12 +3,28 @@ var curr_screen = "welcome"
 $(document).ready(function() {
     $("html").css("visibility", "visible");
     toggle_all_off(0)
-    // $("#game").hide()
+    $("#game").hide()
     $("#welcome_screen").show(0)
 
     set_screen("welcome")
     set_screen("register")
     set_screen("login")
+
+    $("#welcome_register").click(function() {
+        if (curr_screen != "register") {
+            toggle_all_off(700)
+            $("#register_screen").show(700)
+            curr_screen = "register"
+        }
+    })
+
+    $("#welcome_login").click(function() {
+        if (curr_screen != "login") {
+            toggle_all_off(700)
+            $("#login_screen").show(700)
+            curr_screen = "login"
+        }
+    })
 
     $(".nav .nav-link").on("click", function(){
         $(".nav").find(".active").removeClass("active");

@@ -4,6 +4,7 @@ var users = [
     {username: "p", password: "p"}
 ]
 
+var logged_user
 
 $(document).ready(function() {
     $("#login_btn").click(function() {
@@ -11,6 +12,7 @@ $(document).ready(function() {
         let pass = $("#login_pass").val()
         if (users.some(user => user.username == usr && user.password == pass)) {
             login()
+            logged_user = usr
         }
         else{
             window.alert("wrong username or password")

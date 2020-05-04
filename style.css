@@ -1,41 +1,5 @@
 html { visibility:hidden; }
 
-
-
-.bgclr {
-  background-color: #443a3a;
-}
-
-#menu {
-    position: sticky;
-    top: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 10%;
-    background-color: rgb(37, 115, 172);
-    z-index: 1;
-}
-
-    #menu li {
-        border-radius: 10px;
-        display: inline-block;
-        padding: 0px 15px;
-        font-weight: 500;
-        font-size: 20px;
-        text-decoration: none;
-        color: #443a3a;
-        /*color: #ffffff;*/
-    }
-
-        #menu li:hover {
-			cursor: pointer;
-            transition: 0.3s;
-            color: #ffffff;
-            text-shadow: 1px 1px 5px black, 0 0 25px blue, 0 0 15px darkblue;
-            box-shadow: 0 4px 80px 5px rgba(107, 100, 100, 0.70), 0 6px 20px 5px rgba(240, 234, 234, 0.70);
-        }
-
 .registration_error{
     color: red;
     margin-left: 10px;
